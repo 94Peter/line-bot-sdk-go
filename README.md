@@ -23,14 +23,14 @@ This library requires Go 1.11 or later.
 ## Installation ##
 
 ```sh
-$ go get -u github.com/line/line-bot-sdk-go/v7/linebot
+$ go get -u github.com/94peter/line-bot-sdk-go/v7/linebot
 ```
 
 ## Configuration ##
 
 ```go
 import (
-	"github.com/line/line-bot-sdk-go/v7/linebot"
+	"github.com/94peter/line-bot-sdk-go/v7/linebot"
 )
 
 func main() {
