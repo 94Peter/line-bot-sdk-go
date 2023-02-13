@@ -442,42 +442,48 @@ func (e *Event) UnmarshalJSON(body []byte) (err error) {
 		switch rawEvent.Message.Type {
 		case MessageTypeText:
 			e.Message = &TextMessage{
-				ID:      rawEvent.Message.ID,
-				Text:    rawEvent.Message.Text,
-				Emojis:  rawEvent.Message.Emojis,
-				Mention: rawEvent.Message.Mention,
+				ID:          rawEvent.Message.ID,
+				Text:        rawEvent.Message.Text,
+				Emojis:      rawEvent.Message.Emojis,
+				Mention:     rawEvent.Message.Mention,
+				messageType: rawEvent.Message.Type,
 			}
 		case MessageTypeImage:
 			e.Message = &ImageMessage{
 				ID:              rawEvent.Message.ID,
 				ContentProvider: rawEvent.Message.ContentProvider,
 				ImageSet:        rawEvent.Message.ImageSet,
+				messageType:     rawEvent.Message.Type,
 			}
 		case MessageTypeVideo:
 			e.Message = &VideoMessage{
 				ID:              rawEvent.Message.ID,
 				Duration:        rawEvent.Message.Duration,
 				ContentProvider: rawEvent.Message.ContentProvider,
+				messageType:     rawEvent.Message.Type,
 			}
 		case MessageTypeAudio:
 			e.Message = &AudioMessage{
 				ID:              rawEvent.Message.ID,
 				Duration:        rawEvent.Message.Duration,
 				ContentProvider: rawEvent.Message.ContentProvider,
+				messageType:     rawEvent.Message.Type,
 			}
 		case MessageTypeFile:
 			e.Message = &FileMessage{
-				ID:       rawEvent.Message.ID,
-				FileName: rawEvent.Message.FileName,
-				FileSize: rawEvent.Message.FileSize,
+				ID:          rawEvent.Message.ID,
+				FileName:    rawEvent.Message.FileName,
+				FileSize:    rawEvent.Message.FileSize,
+				messageType: rawEvent.Message.Type,
 			}
 		case MessageTypeLocation:
 			e.Message = &LocationMessage{
-				ID:        rawEvent.Message.ID,
-				Title:     rawEvent.Message.Title,
-				Address:   rawEvent.Message.Address,
-				Latitude:  rawEvent.Message.Latitude,
-				Longitude: rawEvent.Message.Longitude,
+				ID:          rawEvent.Message.ID,
+				Title:       rawEvent.Message.Title,
+				Address:     rawEvent.Message.Address,
+				Latitude:    rawEvent.Message.Latitude,
+				Longitude:   rawEvent.Message.Longitude,
+				messageType: rawEvent.Message.Type,
 			}
 		case MessageTypeSticker:
 			e.Message = &StickerMessage{
@@ -487,6 +493,7 @@ func (e *Event) UnmarshalJSON(body []byte) (err error) {
 				StickerResourceType: rawEvent.Message.StickerResourceType,
 				Keywords:            rawEvent.Message.Keywords,
 				Text:                rawEvent.Message.Text,
+				messageType:         rawEvent.Message.Type,
 			}
 		}
 	case EventTypePostback:
